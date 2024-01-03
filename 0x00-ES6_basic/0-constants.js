@@ -1,7 +1,3 @@
-//using const and let instead of var
-//const is used for variables that will not change
-//let is used for variables that will change
-
 export function taskFirst() {
     const task = 'I prefer const when I can.';
     return task;
