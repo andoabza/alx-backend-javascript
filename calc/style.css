@@ -1,0 +1,118 @@
+*{
+    margin: 0;
+    
+}
+.container{
+    overflow: hidden;
+    margin: 50px;
+    margin-top: 10px;
+    height: 37rem;
+    border: 2px solid;
+    border-radius: 30px;
+}
+.head-text{
+    text-align: center;
+    color: black;
+    padding-top: 10px;
+    font-size: 35px;
+    text-decoration: underline;
+}
+.card{
+    overflow: hidden;
+    background-color: slategray;
+    margin: auto;
+    margin-top: 5px;
+    height: 32rem;
+    width: 80%;
+    border: 2px solid;
+    border-radius: 30px; 
+    text-align: center;  
+}
+.input{
+    margin: 10px;
+}
+.inpu{
+    font-size: 27px;
+    text-align: left;
+    justify-content: center;
+    height: 40px;
+    padding: 0 10px;
+    border-radius: 5px;
+    margin: 10px 5rem;
+    background-color: ghostwhite;
+
+}
+.input p{
+    color: ghostwhite;
+    
+}
+.values{
+    display: flex;
+    align-items: center;
+}
+
+.test .items, .item0, .item1, .item2{
+    display: flex;
+    align-items: center;
+    margin: 10px;
+}
+
+
+
+
+li{
+    list-style: none;
+    font-size: 35px;
+    margin: 15px;
+    padding: 3px 15px;
+    border: 1px solid;
+    border-radius: 5px;
+
+    background-color: cadetblue;
+}
+
+li:hover{
+    background-color: steelblue;
+}
+.equal:hover{
+    background-color: steelblue;
+}
+.equal{
+    font-size: 45px;
+    margin: 0 8rem;
+    padding: 1px 10px;
+    border: 1px solid;
+    border-radius: 5px;
+
+    background-color: rgb(16, 28, 131);
+    
+}
+.zero{
+    font-size: 35px;
+    margin:  0 14rem 10px 7rem;
+    margin-top: -20px;
+    padding: 1px 10px;
+    border: 1px solid;
+    border-radius: 5px;
+}
+
+ul{
+    display: flex;
+    text-align: center;
+}
+
+.method ul{
+    display: grid;
+    margin-left: -25px;   
+}
+.no{
+display: grid;
+
+align-items: center;
+background-color: aqua;
+
+}
+.no li{
+    width: 15px;
+    
+}
