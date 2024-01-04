@@ -15,7 +15,12 @@ export default class Currency{
   set name(name){
     this._name = name;
   }
-  displayFullCurrency(){
+  
+  /**
+   * Creates the full string representation of this Currency.
+   * @returns {String}
+   */
+  displayFullCurrency() {
     return `${this.name} (${this.code})`;
   }
 }
