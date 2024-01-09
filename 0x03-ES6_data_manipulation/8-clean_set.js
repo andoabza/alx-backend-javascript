@@ -6,5 +6,5 @@ export default function cleanSet(set, startString) {
         result += item.slice(startString.length) + '-';
       }
     }
-    return result.slice(0, -1); // remove trailing '-'
+    return result.slice(0, -1);
   }
