@@ -5,5 +5,8 @@ export default function(set, startString) {
            result += item.slice(startString.length) + '-';
        }
    }
+   if (startString.length === 0) {
+    return '';
+    }
    return result.slice(0, -1);
 }
