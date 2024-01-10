@@ -52,7 +52,21 @@ function isDirector(employee: DirectorInterface | TeacherInterface) {
 
 function executeWork(employee: any) {
     if (isDirector(employee)) {
-        console.log(new Director().workDirectorTasks());
+        new Director().workDirectorTasks();
     }
-    console.log(new Teacher().workDirectorTasks());
+    if (!isDirector(employee)){
+        new Teacher().workDirectorTasks();
+    }
 }
+type Subjects = 'Math' | 'History';
+
+function teachClass(todayClass: string) {
+    if (todayClass === 'Math'){
+        return ('Teaching Math');
+    }
+    if (todayClass === 'History'){
+        return ('Teaching History');
+    }
+  }
+  createEmployee(200);
+//    teachClass('Math');
