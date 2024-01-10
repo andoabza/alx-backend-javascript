@@ -42,3 +42,17 @@ function createEmployee(salary: number | string){
     return new Director();
 
 }
+
+function isDirector(employee: DirectorInterface | TeacherInterface) {
+    if (employee instanceof Director){
+        return true;
+    }
+    return false;
+}
+
+function executeWork(employee: any) {
+    if (isDirector(employee)) {
+        console.log(new Director().workDirectorTasks());
+    }
+    console.log(new Teacher().workDirectorTasks());
+}
