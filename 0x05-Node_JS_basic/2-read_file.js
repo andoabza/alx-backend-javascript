@@ -1,37 +1,42 @@
-
-/*
-  a function that reads databasefile
-*/
 const fs = require('fs');
+const readline = require('readline');
+const csvParser = require('csv-parser');
 
+/**
+ * Counts the number of students in each field from a CSV file.
+ * @param {string} path - The path to the CSV file.
+ */
 function countStudents(path) {
-  /*
-    countStudents: a function that count students in databse
-  */
-  fs.readFile(path, 'utf-8', (err, data) => {
-    if (err) {
-      throw new Error('Cannot load the database');
+    if (!fs.existsSync(path)) {
+        throw new Error('Cannot load the database');
     }
-    const arr = [data];
-    let a = {};
-    arr.map((element) => a = element.split('\n'));
-    console.log(`Number of students: ${a.length - 1}`);
-    let i = 0;
-    let l = 0;
-    let cs = [];
-    let swe = [];
-    for (let j = 0; j < a.length; j++) {
-      if (a[j].includes('CS')) {
-        cs.push(a[j].split(',')[0]);
-        i++;
-      }
-      if (a[j].includes('SWE')) {
-        swe.push(a[j].split(',')[0]);
-        l++;
-      }
-    }
-    console.log(`Number of students in CS: ${i}. List`, cs);
-    console.log(`Number of students in SWE: ${l}. List`, swe);
-  });
+
+    let studentsCount =  0;
+    let studentsByField = {};
+
+    const rl = readline.createInterface({
+        input: fs.createReadStream(path),
+        output: process.stdout,
+        terminal: false
+    });
+
+    rl.pipe(csvParser())
+        .on('data', (row) => {
+            studentsCount++;
+
+            const field = row.field;
+            if (!studentsByField[field]) {
+                studentsByField[field] = { count:  0, names: [] };
+            }
+            studentsByField[field].count++;
+            studentsByField[field].names.push(row.firstname);
+        })
+        .on('end', () => {
+            console.log(`Number of students: ${studentsCount}`);
+
+            for (const [field, data] of Object.entries(studentsByField)) {
+                console.log(`Number of students in ${field}: ${data.count}. List: ${data.names.join(', ')}`);
+            }
+        });
 }
 module.exports = countStudents;
