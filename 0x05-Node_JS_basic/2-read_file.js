@@ -4,6 +4,9 @@
 const fs = require('fs');
 
 function countStudents(path) {
+  /*
+    countStudents: a function that count students in databse
+  */
   fs.readFile(path, 'utf-8', (err, data) => {  
     if (err) {
       throw new Error('Cannot load the database');
@@ -26,8 +29,8 @@ function countStudents(path) {
             l++;
         }
     }
-    console.log(`Number of students in CS: ${i}. List`, cs);
-    console.log(`Number of students in SWE: ${l}. List`, swe);
+  console.log(`Number of students in CS: ${i}. List`, cs);
+  console.log(`Number of students in SWE: ${l}. List`, swe);
 });
 }
-countStudents('database.csv');
+module.exports = countStudents;
