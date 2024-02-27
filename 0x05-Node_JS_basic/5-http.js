@@ -1,18 +1,22 @@
 const http = require('http');
+
 const fs = require('fs');
 
 const PORT = 1245;
+
 const HOST = 'localhost';
+
 const app = http.createServer();
+
 const DB_FILE = process.argv.length > 2 ? process.argv[2] : '';
 
 /**
- * Counts the students in a CSV data file.
+ * Counts the students.
  * @param {String} dataPath The path to the CSV data file.
- * @author Bezaleel Olakunori <https://github.com/B3zaleel>
+ * @author Andamlak Abza <https://github.com/andoabza>
  */
 const countStudents = (dataPath) => new Promise((resolve, reject) => {
-  if (!dataPath) {
+    if (!dataPath) {
     reject(new Error('Cannot load the database'));
   }
   if (dataPath) {
@@ -22,9 +26,13 @@ const countStudents = (dataPath) => new Promise((resolve, reject) => {
       }
       if (data) {
         const reportParts = [];
+        
         const fileLines = data.toString('utf-8').trim().split('\n');
+        
         const studentGroups = {};
+        
         const dbFieldNames = fileLines[0].split(',');
+        
         const studentPropNames = dbFieldNames.slice(
           0,
           dbFieldNames.length - 1,
@@ -32,11 +40,14 @@ const countStudents = (dataPath) => new Promise((resolve, reject) => {
 
         for (const line of fileLines.slice(1)) {
           const studentRecord = line.split(',');
+          
           const studentPropValues = studentRecord.slice(
             0,
             studentRecord.length - 1,
           );
+          
           const field = studentRecord[studentRecord.length - 1];
+
           if (!Object.keys(studentGroups).includes(field)) {
             studentGroups[field] = [];
           }
@@ -85,6 +96,7 @@ const SERVER_ROUTE_HANDLERS = [
         .then((report) => {
           responseParts.push(report);
           const responseText = responseParts.join('\n');
+          
           res.setHeader('Content-Type', 'text/plain');
           res.setHeader('Content-Length', responseText.length);
           res.statusCode = 200;
@@ -93,6 +105,7 @@ const SERVER_ROUTE_HANDLERS = [
         .catch((err) => {
           responseParts.push(err instanceof Error ? err.message : err.toString());
           const responseText = responseParts.join('\n');
+          
           res.setHeader('Content-Type', 'text/plain');
           res.setHeader('Content-Length', responseText.length);
           res.statusCode = 200;
