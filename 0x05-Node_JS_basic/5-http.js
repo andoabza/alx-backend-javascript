@@ -26,13 +26,12 @@ const countStudents = (dataPath) => new Promise((resolve, reject) => {
       }
       if (data) {
         const reportParts = [];
-        
         const fileLines = data.toString('utf-8').trim().split('\n');
-        
+
         const studentGroups = {};
-        
+
         const dbFieldNames = fileLines[0].split(',');
-        
+
         const studentPropNames = dbFieldNames.slice(
           0,
           dbFieldNames.length - 1,
@@ -40,12 +39,12 @@ const countStudents = (dataPath) => new Promise((resolve, reject) => {
 
         for (const line of fileLines.slice(1)) {
           const studentRecord = line.split(',');
-          
+
           const studentPropValues = studentRecord.slice(
             0,
             studentRecord.length - 1,
           );
-          
+
           const field = studentRecord[studentRecord.length - 1];
 
           if (!Object.keys(studentGroups).includes(field)) {
@@ -96,7 +95,7 @@ const SERVER_ROUTE_HANDLERS = [
         .then((report) => {
           responseParts.push(report);
           const responseText = responseParts.join('\n');
-          
+
           res.setHeader('Content-Type', 'text/plain');
           res.setHeader('Content-Length', responseText.length);
           res.statusCode = 200;
@@ -105,7 +104,7 @@ const SERVER_ROUTE_HANDLERS = [
         .catch((err) => {
           responseParts.push(err instanceof Error ? err.message : err.toString());
           const responseText = responseParts.join('\n');
-          
+
           res.setHeader('Content-Type', 'text/plain');
           res.setHeader('Content-Length', responseText.length);
           res.statusCode = 200;
@@ -124,7 +123,7 @@ app.on('request', (req, res) => {
   }
 });
 app.listen(PORT, HOST, () => {
-  process.stdout.write(`Server listening at -> http://${HOST}:${PORT}\n`);
+  console.log('...');
 });
 
 module.exports = app;
