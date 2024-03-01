@@ -1,1 +1,2 @@
-const calculateNumber = (a, b) => Math.round(a) + Math.round(b);
+let l = 1.4;
+console.log(Math.round(l));
