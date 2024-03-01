@@ -3,16 +3,16 @@ const calculateNumber = require("./0-calcul");
 
 describe('calculateNumber', function() {
     it('4', function() {
-        assert.equal(calculateNumber(1, 3), 4);
+        assert.strictEqual(calculateNumber(1, 3), 4);
     })
     it('5', function() {
-        assert.equal(calculateNumber(1.5, 3), 5);
+        assert.strictEqual(calculateNumber(1.5, 3), 5);
     })
     it('5', function() {
-        assert.equal(calculateNumber(1.5, 3.5), 6);
+        assert.strictEqual(calculateNumber(1.5, 3.5), 6);
     })
     it('6', function() {
-        assert.equal(calculateNumber(1.4, 3.5), 5);
+        assert.strictEqual(calculateNumber(1.4, 3.5), 5);
     })
 });
 
