@@ -1,5 +1,5 @@
 {
-    "scripts": {
-    "test": "mocha --require assert "
-}
+  "scripts": {
+     "test": "./node_modules/mocha/bin/mocha,
+   }
 }
