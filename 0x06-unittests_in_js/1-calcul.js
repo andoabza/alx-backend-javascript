@@ -1,13 +1,13 @@
 const calculateNumber = (type, a, b) => {
   a = Math.round(a);
   b = Math.round(b);
-  if (a === 'SUM') {
+  if (type === 'SUM') {
     return eval(a + b);
   }
-  if (a === 'SUBTRACT') {
+  if (type === 'SUBTRACT') {
     return eval(a - b);
   }
-  if (a === 'DEVIDE') {
+  if (type === 'DEVIDE') {
     if (b === 0){
       return 'Error';
     }
