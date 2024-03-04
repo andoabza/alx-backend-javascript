@@ -1,5 +1,5 @@
 {
   "scripts": {
-     "test": "node ./node_modules/mocha/bin/mocha --require babel-register --exit",
+     "test": "node ./node_modules/mocha/bin/mocha",
    }
 }
